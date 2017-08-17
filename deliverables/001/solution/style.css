@@ -1,0 +1,135 @@
+*:active {
+	cursor: not-allowed !important;
+}
+.clearfix::after {
+	content: "";
+	display: table;
+	clear: both;
+}
+.eighty {
+	width: 80%;
+}
+.eighty-preten {
+	width: 80%;
+	padding-left: 10%;
+	float: left;
+}
+.fifty {
+	width: 50%;
+	float: left;
+}
+html {
+	background-color: #e9ba9e;
+}
+body {
+	background-color: #f9f1de;
+	font-family: 'Lora', serif;
+	margin: 0 2.5% 0 2.5%;
+	position: relative;
+	padding-bottom: 40px;
+}
+header {
+	height: 40vh;
+	background: #2b9cd4;
+}
+div#principal-image {
+	background-image: url(principal-image.jpg);
+	background-size: cover;
+	background-position: center;
+	height: 100%;
+	width: 70%;
+	float: left;
+	position: relative;
+}
+div#principal-image > p {
+	position: absolute;
+	bottom: 10%;
+	margin: 0;
+	background: white;
+	width: 61%;
+	font-size: 40px;
+	opacity: 0.6;
+	padding: 5px;
+	text-align: center;
+}
+header > nav {
+	float: left;
+	width: 30%;
+	height: 100%;
+	color: white;
+}
+header > nav > ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+header > nav > ul > li {
+	padding: 6px 25px;
+}
+header > nav > ul > li:hover {
+	background-color: #4faddc;
+	cursor: pointer;
+}
+div#upper-ribbon {
+	background-color: #093e7f;
+	color: white;
+}
+div#upper-ribbon > ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+div#upper-ribbon > ul > li {
+	float: left;
+	width: 12.5%;
+	text-align: center;
+	padding: 10px 0;
+}
+div#upper-ribbon > ul > li:hover {
+	cursor: pointer;
+	background-color: #245fa7;
+}
+div#icons-banner {
+	width: 80%;
+	margin: auto;
+	margin-top: 20px;
+	color: #4c78b6;
+	text-align: center;
+}
+div#icons-banner > div {
+	float: left;
+	width: 23%;
+	padding: 0 1%;
+}
+div#icons-banner > div > i {
+	font-size: 100px;
+}
+div.person-profile {
+	position: relative;
+}
+div.person-profile > img {
+	width: 20%;
+	padding: 5px 5%;
+	position: relative;
+	left: 0;
+}
+div.person-profile > p {
+	width: 70%;
+	text-align: center;
+	margin: 0;
+	position: absolute;
+	top: 0;
+	left: 30%;
+	top: 50%;
+	transform: translateY(-50%);
+	white-space: pre-line;
+}
+footer {
+	position: absolute;
+	bottom: 0;
+	background-color: #0077bf;
+	color: white;
+	width: 100%;
+	text-align: center;
+	line-height: 30px;
+}
