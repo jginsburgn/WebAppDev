@@ -1,0 +1,178 @@
+*:active {
+	cursor: not-allowed !important;
+}
+.clearfix::after {
+	content: "";
+	display: table;
+	clear: both;
+}
+.eighty {
+	width: 80%;
+}
+.eighty-preten {
+	width: 80%;
+	padding-left: 10%;
+	float: left;
+}
+.fifty {
+	width: 50%;
+	float: left;
+}
+html {
+	font-family: 'Nunito', sans-serif;
+	font-size: 12px;
+	padding-bottom: 20px;
+	position: relative;
+}
+body {
+	background-color: #ff8e8e;
+	margin: 0;
+}
+header {
+	background-image: url(assets/header-background.jpg);
+	background-position: center;
+	background-size: cover;
+	line-height: 100px;
+	text-align: center;
+}
+header > img {
+	height: 80px;
+	vertical-align: middle;
+}
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	background: black;
+	color: white;
+	text-align: center;
+	font-size: 0.8rem;
+	line-height: 20px;
+}
+/* Level 0 */
+div.container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin: auto;
+}
+/* Level 1 */
+div.container > nav {
+	background-color: #da497c;
+	order: 3;
+}
+div.container > div.comic {
+	order: 1;
+	background: white;
+	display: flex;
+	flex-direction: column;
+}
+div.container > div.captions {
+	order: 2;
+	margin: 0 4px;
+}
+/* Level 2 */
+div.container > nav > ul {
+	list-style-type: none;
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	padding: 0;
+}
+div.container > nav > ul > li {
+	text-align: center;
+}
+div.comic > h1 {
+	font-size: 1rem;
+	text-align: center;
+	margin: 0;
+}
+div.comic > div.scene {
+	padding: 2px 5px;
+}
+div.comic > div.controls {
+	display: flex;
+	justify-content: center;
+}
+div.captions > h1 {
+	font-size: 1rem;
+	text-align: center;
+}
+div.captions > p {
+	text-align: justify;
+}
+/*Level 3*/
+div.controls > i {
+	margin: 0 5px;
+}
+div.scene > img {
+	width: 100%;
+	display: block;
+}
+@media screen and (min-width: 481px) {
+	html {
+		font-size: 16px;
+	}
+	body {
+		background-color: #f5dfba;
+	}
+	div.container {
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: start;
+	}
+	div.container > nav,
+	div.container > div.comic,
+	div.container > div.captions {
+		order: 0;
+	}
+	div.container > nav > ul {
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+	div.container > nav > ul > li {
+		flex-grow: 1;
+		flex-basis: 1px;
+		line-height: 2.5;
+	}
+	div.container > nav {
+		flex: 0 0 100%;
+		background-color: #dab449;
+	}
+	div.container > div.comic {
+		flex: 2 0 0;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+	div.container > div.captions {
+		flex: 1 0 0;
+	}
+	div.comic {
+		padding: 2px;
+		border: 3px solid #888888;
+	}
+	div.comic > h1 {
+		flex: 0 0 100%;
+	}
+	div.comic > div.scene {
+		padding: 2px;
+	}
+	div.comic > div.scene:nth-of-type(1) {
+		flex: 0 1 100%;
+	}
+	div.comic > div.scene:nth-of-type(2) {
+		flex: 1.5 0 auto;
+	}
+	div.comic > div.scene:nth-of-type(3) {
+		flex: 1 0 auto;
+	}
+	div.comic > div.controls {
+		flex: 0 1 100%;
+	}
+}
+@media screen and (min-width: 901px) {
+	div.container {
+		width: 900px;
+		border: 1px solid black;
+	}
+}
