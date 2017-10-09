@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>A simple callback example</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="./assert.css">
+	<script src="./assert.js"></script>
+</head>
+<body>
+	<input id="the-sequence" type="text" name="" value="[1, 2, 1, 2, 3, 1, 2, 3, 4, 5, 1, 10, 11, 12, 13, 14]" style="width: 100%; box-sizing: border-box;">
+	<input type="button" name="" value="Try Again!" onclick="invokeUseless()">
+	<script>
+	'use strict';
+
+	var text = 'Domo arigato!';
+	report("Before defining functions");
+
+	function useless(ninjaCallback) {
+		report("In useless function");
+		try {
+			var testSequence = JSON.parse(document.getElementById("the-sequence").value);
+			var retVal =  ninjaCallback(testSequence);
+			console.log(retVal, testSequence);
+			return retVal;
+		} catch (e) {
+			fail(e.message + " of: " + document.getElementById("the-sequence").value);
+		}
+	}
+
+	(function() {
+		function getIncreasingSequences(sequence) {
+			if (sequence.length == 0) {
+				return [[]];
+			}
+			else {
+				var increasingFirstElementsCount = 1;
+				for (var i = 0; i < sequence.length - 1; i++) {
+					if (sequence[i] <= sequence[i + 1]) {
+						++increasingFirstElementsCount;
+					}
+					else {
+						break;
+					}
+				}
+				var firstLongestIncreasingSequence = sequence.splice(0, increasingFirstElementsCount);
+				var furtherSequences = getIncreasingSequences(sequence);
+				furtherSequences.push(firstLongestIncreasingSequence);
+				return furtherSequences;
+			}
+		}
+		window.buscaMayor = function(sequence) {
+			sequence = sequence.slice();
+			var increasingSequences = getIncreasingSequences(sequence);
+			var positionOfLargestSequence = 0;
+			var lengthOfLongestSequence = increasingSequences[0].length;
+			increasingSequences.forEach(function(sequence, index) {
+				if (sequence.length >= lengthOfLongestSequence) {
+					lengthOfLongestSequence = sequence.length;
+					positionOfLargestSequence = index;
+				}
+			});
+			return {
+				sequence: increasingSequences[positionOfLargestSequence],
+				length: lengthOfLongestSequence
+			};
+		}
+	})()
+
+	report("Before making all the calls");
+
+	function invokeUseless() {
+		report(JSON.stringify(useless(buscaMayor), null, 4));
+	}
+	invokeUseless();
+
+	report("After the calls have been made");
+	</script>
+</body>
+</html>
