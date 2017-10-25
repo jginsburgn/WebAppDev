@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>A simple constructor and recursivity</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="./assert.css">
+	<script src="./assert.js"></script>
+</head>
+<body>
+	<input id="the-sequence" type="text" name="" value="[1, 2, 1, [2, 3, 1, [2, 3, 4, []], 5, 1, 10], 11, [12, 13], 14]" style="width: 100%; box-sizing: border-box;">
+	<input type="button" name="" value="Try Again!" onclick="invokeUseless()">
+	<script>
+	'use strict';
+
+	report("Before defining functions");
+
+	function test() {
+		try {
+			var testSequence = JSON.parse(document.getElementById("the-sequence").value);
+			var maxFinder =  new MaxFinder(testSequence);
+			return maxFinder.max();
+		} catch (e) {
+			console.log(e);
+			fail(e.message + " of: " + document.getElementById("the-sequence").value);
+		}
+	}
+
+	(function() {
+		window.MaxFinder = function(inceptedArray) {
+			this.object = inceptedArray;
+			this.max = () => {
+				function recursiveMax(array) {
+					if (Array.isArray(array) && array.length > 0) {
+						var currentMax = Number.NEGATIVE_INFINITY;
+						for (let element of array) {
+							var innerMax = recursiveMax(element);
+							if (Array.isArray(element) && innerMax > currentMax) {
+								currentMax = innerMax;
+							}
+							else if (element > currentMax) {
+								currentMax = element;
+							}
+						}
+						return currentMax;
+					}
+					else {
+						return NaN;
+					}
+				}
+				return recursiveMax(this.object);
+			}
+		}
+	})()
+
+	report("Before making all the calls");
+
+	function invokeUseless() {
+		report(JSON.stringify(test(), null, 4));
+	}
+	invokeUseless();
+
+	report("After the calls have been made");
+	</script>
+</body>
+</html>
